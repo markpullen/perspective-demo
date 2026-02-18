@@ -1,24 +1,16 @@
-import { redirect } from 'next/navigation'
 import { cookies } from 'next/headers'
 import DevPageClient from './DevPageClient'
 
-const DEV_PASSWORD = process.env.DEV_PAGE_PASSWORD || 'perspective-dev-2024'
 const DEV_COOKIE = 'perspective_dev_auth'
+const SESSION_TOKEN = 'dev-session-ok'
 
-export default function DevPage({ searchParams }: { searchParams: { pw?: string } }) {
+export default function DevPage({ searchParams }: { searchParams: { error?: string } }) {
   const cookieStore = cookies()
   const devAuth = cookieStore.get(DEV_COOKIE)?.value
-
-  // Check cookie or query param
-  const pw = searchParams.pw
-  if (pw === DEV_PASSWORD) {
-    // Will be set by the client redirect after form submit — but for direct ?pw= links, trust it
-  }
-
-  const authed = devAuth === DEV_PASSWORD || pw === DEV_PASSWORD
+  const authed = devAuth === SESSION_TOKEN
 
   if (!authed) {
-    return <DevLoginForm />
+    return <DevLoginForm error={searchParams.error} />
   }
 
   const appUrl = (process.env.APP_URL || 'http://localhost:3001').trim()
@@ -43,10 +35,10 @@ export default function DevPage({ searchParams }: { searchParams: { pw?: string 
     keyId: 'perspective-demo-key-1',
   }
 
-  return <DevPageClient config={config} devPassword={DEV_PASSWORD} />
+  return <DevPageClient config={config} />
 }
 
-function DevLoginForm() {
+function DevLoginForm({ error }: { error?: string }) {
   return (
     <div className="min-h-screen flex flex-col bg-gray-100">
       <header style={{ backgroundColor: '#1a1a2e' }} className="px-6 py-4">
@@ -57,7 +49,17 @@ function DevLoginForm() {
         <div className="bg-white rounded-xl border border-gray-200 shadow-sm w-full max-w-sm p-8">
           <h1 className="text-xl font-semibold text-gray-900 mb-1">Developer access</h1>
           <p className="text-sm text-gray-500 mb-6">Enter the developer password to view integration details.</p>
-          <form method="GET" action="/dev" className="space-y-4">
+          {error === 'wrong-password' && (
+            <div className="mb-4 bg-red-50 border border-red-200 text-red-700 text-sm px-3 py-2 rounded-lg">
+              Incorrect password. Please try again.
+            </div>
+          )}
+          {error === 'not-configured' && (
+            <div className="mb-4 bg-amber-50 border border-amber-200 text-amber-700 text-sm px-3 py-2 rounded-lg">
+              Developer access is not configured on this server.
+            </div>
+          )}
+          <form method="POST" action="/api/dev/auth" className="space-y-4">
             <input
               type="password"
               name="pw"

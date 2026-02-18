@@ -29,6 +29,9 @@ export default async function DashboardPage() {
       <header style={{ backgroundColor: '#1a1a2e' }} className="px-6 py-4 flex items-center justify-between">
         <span className="text-white text-xl font-bold tracking-wide">Perspective</span>
         <div className="flex items-center gap-4">
+          <a href="/dev" className="text-gray-500 text-xs hover:text-gray-300 transition-colors hidden sm:block">
+            Developer Guide
+          </a>
           <span className="text-gray-300 text-sm">{profile.ContactFullName}</span>
           <LogoutButton />
         </div>

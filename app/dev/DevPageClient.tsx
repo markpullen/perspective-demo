@@ -66,7 +66,7 @@ function Section({ title, children, accent }: { title: string; children: React.R
   )
 }
 
-export default function DevPageClient({ config, devPassword }: { config: Config; devPassword: string }) {
+export default function DevPageClient({ config }: { config: Config }) {
   const [tokenData, setTokenData] = useState<TokenPreview | null>(null)
   const [tokenLoading, setTokenLoading] = useState(false)
   const [tokenError, setTokenError] = useState('')
