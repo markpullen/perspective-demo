@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls \"C:\\\\Users\\\\MarkPullen\\\\.claude\\\\projects\\\\c--Dev-PerspectiveDemo\\\\memory\"\" 2>/dev/null && ls \"C:UsersMarkPullen.claude\"\")",
+      "Bash(git --version)",
+      "Bash(gh:*)",
+      "Bash(vercel:*)",
+      "Bash(node --version:*)",
+      "Bash(npm --version:*)",
+      "Bash(where:*)",
+      "Bash(npm install:*)",
+      "Bash(winget install:*)",
+      "Bash(cmd /c \"where gh\")",
+      "Bash(cmd /c \"where gh 2>&1\")",
+      "Bash(cmd /c \"gh --version\")",
+      "Bash(dir:*)",
+      "Bash(echo:*)",
+      "Bash(node -e:*)",
+      "Bash(cmd /c \"gh auth status 2>&1\")",
+      "Bash(git config:*)",
+      "Bash(git init:*)",
+      "Bash(git commit:*)"
+    ]
+  }
+}
