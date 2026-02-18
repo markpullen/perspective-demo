@@ -19,7 +19,14 @@
       "Bash(cmd /c \"gh auth status 2>&1\")",
       "Bash(git config:*)",
       "Bash(git init:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(PRIVATE_JWK='{\"\"kty\"\":\"\"RSA\"\",\"\"n\"\":\"\"tqs6qFwUg8LP4v2mF0AkhQ_altkYmWL-0hWVXeLc1RJ7ACm0ZrKwIdGwpOcCyEanDG_S68KrU-Uz3B3cvlA9XY9ThDjlm0doO_xSL8HpWNcxeM6PQZlB9oMwqi3JWCduY6QpTkelfiidpoirwQDvWT2c4Z1EIF_VrRpaz7Cyb_tvkr9i9IZQTvz9OPAaYKtvucUspkE-jMNU9LOTdsS5a7-Nq2T8uL2rfoMYvWLJXNLiESY9Ai8Uud8UAPNNWO-m82DikdwMFLcVxLVVHrJwoBGur9_nDKKvZehZrWzaadBTzZFUDfFyv8R3xAUDyLrcAhmJeyXNR_OBYBnwOmFjVQ\"\",\"\"e\"\":\"\"AQAB\"\",\"\"d\"\":\"\"HP0qh2pphQmHFUZcs-blhMphzbuxODJqLyvmsuocUqImq_1yWDP2WL-e0WSp39-6hfI_HlQb_Wnr43xHulogivcCcYLYCV75Lz_ZSSP0ZLlt6_aX7Hima7khIXi3sco8Lgrw1S_wlwdaEYIyA6Si1148Rd-_3oVm8xwyGjC3-KZBQukRBo-cGW6ieLRfMpla_lA1xUpd0y2pqMi915wQHPEt42_outvUo70ORh7oenxxpnEDwuWfoedewBqVhZwHFTWRAvIdejKOGfvmp50j6vZVyIhDEiPQr0MofaIT0w3_NCe1G15ZT-dsq9i0n1Z1OWrQdj51YpUksWkJg-PVoQ\"\",\"\"p\"\":\"\"3hORv1aby09NjDsnbk1DD6FmgOM5JwN4YX7zWdhix6J-QD5Vc3ORvAII6gy5wsz-2nbThOfTuW_ky_EMD2pISxKWNRYf4kFkdglgEt7H-WyRqQO7kR6p-WEGMcWCtTDVe_o3Iv47kV0R0Fv-rQhGR_JAZ1NXXTv68zF3g3rrdkU\"\",\"\"q\"\":\"\"0pKaZgdr6ZVriH1Tgs-R1fGfPoYlHx3KYfqiEc8SYsoyDuDjRpiWcPFj0fB-IgisbzTyCrkCsg2pFncT6eHdjfydSJ0x5R6av55WYzt6YlNn-vfwtHAu9wxCXdc8oO4oNoZl8EAUFjnbaccsincUFtPy1Wgv0hJh2SGPBLFyUdE\"\",\"\"dp\"\":\"\"1MuPpvaIhoJQ3oR4PhtOnRWdMPeJ9jY_Db0l1fuge4bazxhrrRsalDqm7A6RmXXw5slh2UKDAHeVl048rjC7YSRIRkoS9yyN5QUKyEos-HXuBTQMcPwfB1TPKLYHjzNh_VA_sQpHbfzuaucb3BXHsn0Q9XFIj5A_4PSPfq80HLk\"\",\"\"dq\"\":\"\"AvjYvwnpxwE55FJIhHcjis5_PeWsznSgL6PW98Nhcg2CiV05N_zdWri9fPAVB6vxqxwnMmmMFTFGKrABkvKCKwfevHCjjKVS79NvSrVDM_ITbKJlPla7AvekVCi-jVLvNF3PQIXXAr1MUIDkKwwlN3FEYyi2TBPAV802dI2AnJE\"\",\"\"qi\"\":\"\"VoKpxUcgMDrKiholY7gj-7Y0DZmipZzDvfXgInLYw475UmMHYmwUBS717RAlf68F9w9NJ5pQxcaMW7coC-7w5F6adtKC4uyL9_AzWerVUnLgQTsM5AmRfYosSAvoQOhWksmKC-JrCuIWcW-OU9UBKamhXA89mM9vcLTOhgzUgoQ\"\"}')",
+      "Bash(PUBLIC_JWK='{\"\"kty\"\":\"\"RSA\"\",\"\"n\"\":\"\"tqs6qFwUg8LP4v2mF0AkhQ_altkYmWL-0hWVXeLc1RJ7ACm0ZrKwIdGwpOcCyEanDG_S68KrU-Uz3B3cvlA9XY9ThDjlm0doO_xSL8HpWNcxeM6PQZlB9oMwqi3JWCduY6QpTkelfiidpoirwQDvWT2c4Z1EIF_VrRpaz7Cyb_tvkr9i9IZQTvz9OPAaYKtvucUspkE-jMNU9LOTdsS5a7-Nq2T8uL2rfoMYvWLJXNLiESY9Ai8Uud8UAPNNWO-m82DikdwMFLcVxLVVHrJwoBGur9_nDKKvZehZrWzaadBTzZFUDfFyv8R3xAUDyLrcAhmJeyXNR_OBYBnwOmFjVQ\"\",\"\"e\"\":\"\"AQAB\"\",\"\"kid\"\":\"\"perspective-demo-key-1\"\",\"\"use\"\":\"\"sig\"\",\"\"alg\"\":\"\"RS256\"\"}')",
+      "Bash(git credential-manager:*)",
+      "Bash(git credential-wincred:*)",
+      "Bash(git remote add:*)",
+      "Bash(git branch:*)",
+      "Bash(git remote set-url:*)"
     ]
   }
 }

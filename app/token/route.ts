@@ -66,7 +66,7 @@ export async function POST(request: NextRequest) {
   }
 
   const { privateKey } = await getKeyPair()
-  const appUrl = process.env.APP_URL || 'http://localhost:3001'
+  const appUrl = (process.env.APP_URL || 'http://localhost:3001').trim()
   const now = Math.floor(Date.now() / 1000)
 
   const userprofilesObj = user.profile

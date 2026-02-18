@@ -47,7 +47,7 @@ export async function POST(request: NextRequest) {
 
   // If OIDC flow, issue auth code and redirect back to RP
   if (oidcParams && oidcParams.client_id) {
-    const registeredRedirectUri = process.env.TRADESTART_CALLBACK_URL
+    const registeredRedirectUri = process.env.TRADESTART_CALLBACK_URL?.trim()
 
     if (
       oidcParams.client_id.toLowerCase() !== REGISTERED_CLIENT_ID ||

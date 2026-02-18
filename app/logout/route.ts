@@ -14,7 +14,7 @@ export async function GET(request: NextRequest) {
   }
 
   const cookieOptions = clearSessionCookieOptions()
-  const redirectTo = postLogoutRedirectUri || (process.env.TRADESTART_LOGOUT_URL ?? '/login')
+  const redirectTo = postLogoutRedirectUri || ((process.env.TRADESTART_LOGOUT_URL ?? '/login').trim())
 
   const response = NextResponse.redirect(redirectTo)
   response.cookies.set(cookieOptions)

@@ -26,7 +26,7 @@ export async function GET(request: NextRequest) {
   const codeChallenge = searchParams.get('code_challenge')
   const codeChallengeMethod = searchParams.get('code_challenge_method')
 
-  const registeredRedirectUri = process.env.TRADESTART_CALLBACK_URL
+  const registeredRedirectUri = process.env.TRADESTART_CALLBACK_URL?.trim()
 
   // Validate redirect_uri first (before using it for error redirects)
   if (!redirectUri || redirectUri !== registeredRedirectUri) {
@@ -91,7 +91,7 @@ export async function GET(request: NextRequest) {
   }
 
   // Not logged in — redirect to login page with OIDC params
-  const loginUrl = new URL('/login', process.env.APP_URL || 'http://localhost:3001')
+  const loginUrl = new URL('/login', (process.env.APP_URL || 'http://localhost:3001').trim())
   loginUrl.searchParams.set('response_type', responseType)
   loginUrl.searchParams.set('client_id', clientId)
   loginUrl.searchParams.set('redirect_uri', redirectUri)

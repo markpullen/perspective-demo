@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server'
 export const dynamic = 'force-dynamic'
 
 export async function GET() {
-  const appUrl = process.env.APP_URL || 'http://localhost:3001'
+  const appUrl = (process.env.APP_URL || 'http://localhost:3001').trim()
 
   return NextResponse.json({
     issuer: appUrl,
