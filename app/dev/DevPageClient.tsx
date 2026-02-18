@@ -375,6 +375,98 @@ export default function DevPageClient({ config }: { config: Config }) {
           </div>
         </Section>
 
+        {/* Staging vs Production */}
+        <Section title="Staging vs Production Configuration" accent="#6366f1">
+          <div className="py-4 space-y-5 text-sm">
+            <p className="text-gray-600">
+              The staging Perspective IdP (<code className="bg-gray-100 px-1 rounded">perspective-demo.vercel.app</code>) connects to Novus staging.
+              Production will need a separate Perspective deployment with the values below.
+            </p>
+
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="text-left text-xs text-gray-400 uppercase tracking-wide border-b border-gray-100">
+                    <th className="pb-2 font-medium w-52">Setting</th>
+                    <th className="pb-2 font-medium w-64">Staging</th>
+                    <th className="pb-2 font-medium">Production</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-100">
+                  {[
+                    {
+                      label: 'Perspective issuer (APP_URL)',
+                      staging: 'https://perspective-demo.vercel.app',
+                      prod: 'TBD — production Perspective domain',
+                      prodPending: true,
+                    },
+                    {
+                      label: 'redirect_uri',
+                      staging: config.redirectUri || '(see TRADESTART_CALLBACK_URL env var)',
+                      prod: 'https://app.novusloyalty.com/api/auth/sso/callback',
+                    },
+                    {
+                      label: 'post_logout_redirect_uri',
+                      staging: config.postLogoutRedirectUri || '(see TRADESTART_LOGOUT_URL env var)',
+                      prod: 'https://app.novusloyalty.com/portal/login?code=tradestart',
+                    },
+                    {
+                      label: 'Portal login URL (dashboard button)',
+                      staging: 'https://staging.novusloyalty.com/portal/login?code=tradestart',
+                      prod: 'https://app.novusloyalty.com/portal/login?code=tradestart',
+                    },
+                    {
+                      label: 'SSO authorize URL',
+                      staging: 'https://staging.novusloyalty.com/api/auth/sso/authorize?tenant=tradestart',
+                      prod: 'https://app.novusloyalty.com/api/auth/sso/authorize?tenant=tradestart',
+                    },
+                    {
+                      label: 'client_id',
+                      staging: '3668F1E1-677D-414F-95ED-1CC789A92A85',
+                      prod: '3668F1E1-677D-414F-95ED-1CC789A92A85 (no change)',
+                    },
+                    {
+                      label: 'tenant',
+                      staging: 'tradestart',
+                      prod: 'tradestart (no change)',
+                    },
+                  ].map(row => (
+                    <tr key={row.label}>
+                      <td className="py-2.5 text-gray-600 font-medium">{row.label}</td>
+                      <td className="py-2.5 font-mono text-xs text-gray-500 break-all pr-4">{row.staging}</td>
+                      <td className={`py-2.5 font-mono text-xs break-all ${row.prodPending ? 'text-amber-600 italic' : 'text-gray-900'}`}>{row.prod}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1">
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                <p className="text-xs font-semibold text-blue-800 mb-2 uppercase tracking-wide">Perspective to update (env vars)</p>
+                <ul className="text-xs text-blue-700 space-y-1 font-mono">
+                  <li>APP_URL → production domain</li>
+                  <li>TRADESTART_CALLBACK_URL → app.novusloyalty.com callback</li>
+                  <li>TRADESTART_LOGOUT_URL → app.novusloyalty.com logout</li>
+                  <li>TRADESTART_PORTAL_URL → app.novusloyalty.com portal</li>
+                  <li>RSA_PRIVATE_KEY → new key pair for production</li>
+                  <li>RSA_PUBLIC_KEY → new key pair for production</li>
+                </ul>
+              </div>
+              <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
+                <p className="text-xs font-semibold text-amber-800 mb-2 uppercase tracking-wide">Novus to update (TenantExtension DB)</p>
+                <ul className="text-xs text-amber-700 space-y-1 font-mono">
+                  <li>providerUrl → production issuer URL</li>
+                  <li>jwksUrl → production /.well-known/keys</li>
+                  <li>issuer → production issuer URL</li>
+                  <li>logoutUrl → production /logout</li>
+                </ul>
+                <p className="text-xs text-amber-600 mt-2 non-mono">Single DB update to the TenantExtension record for tenant <strong>tradestart</strong>.</p>
+              </div>
+            </div>
+          </div>
+        </Section>
+
         <footer className="text-center text-xs text-gray-400 pb-8">
           Perspective Demo IdP — for integration testing only. Not for production use.
         </footer>
