@@ -15,7 +15,7 @@ export async function getKeyPair(): Promise<KeyPair> {
   const privateJwkStr = process.env.RSA_PRIVATE_KEY_JWK
   const publicJwkStr = process.env.RSA_PUBLIC_KEY_JWK
 
-  if (privateJwkStr && publicJwkStr) {
+  if (privateJwkStr && publicJwkStr && privateJwkStr.trim().startsWith('{') && publicJwkStr.trim().startsWith('{')) {
     const privateJwk = JSON.parse(privateJwkStr)
     const publicJwk = JSON.parse(publicJwkStr)
     const privateKey = await importJWK(privateJwk, 'RS256') as KeyLike
