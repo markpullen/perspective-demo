@@ -17,7 +17,11 @@ export default async function DashboardPage() {
   const profile = user.profile
   const org = profile.Organisations[0]
   const addr = profile.ContactPostalAddress
-  const tradeStartUrl = process.env.TRADESTART_PORTAL_URL || '#'
+  const portalBase = (process.env.TRADESTART_PORTAL_URL || 'https://staging.novusloyalty.com/portal/login?code=tradestart').trim()
+  // SSO authorize: Novus will redirect back to Perspective /authorize, and since the user
+  // already has a Perspective session, silent SSO issues an auth code immediately → portal
+  const baseUrl = new URL(portalBase).origin
+  const tradeStartSsoUrl = `${baseUrl}/api/auth/sso/authorize?tenant=tradestart`
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-100">
@@ -75,7 +79,7 @@ export default async function DashboardPage() {
                 Access your TradeStart rewards, check your points balance, and redeem rewards
               </p>
               <a
-                href={tradeStartUrl}
+                href={tradeStartSsoUrl}
                 style={{ backgroundColor: '#00AEEF' }}
                 className="inline-block py-2.5 px-5 text-white text-sm font-semibold rounded-lg hover:opacity-90 transition-opacity"
               >
